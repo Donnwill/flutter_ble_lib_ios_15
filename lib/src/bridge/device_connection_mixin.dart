@@ -10,7 +10,7 @@ mixin DeviceConnectionMixin on FlutterBLE {
     bool isAutoConnect,
     int requestMtu, 
     bool refreshGatt,
-    Duration? timeout
+    Duration timeout
   ) async {
     return await _methodChannel.invokeMethod(
       MethodName.connectToDevice,

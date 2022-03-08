@@ -57,7 +57,7 @@ class Characteristic extends InternalCharacteristic {
   /// Reads the value of this characteristic.
   ///
   /// The value can be read only if [isReadable] is `true`.
-  Future<Uint8List> read({String? transactionId}) =>
+  Future<Uint8List> read({String transactionId}) =>
       _manager.readCharacteristicForIdentifier(
         service.peripheral,
         this,
@@ -72,7 +72,7 @@ class Characteristic extends InternalCharacteristic {
   Future<void> write(
     Uint8List value,
     bool withResponse, {
-    String? transactionId,
+    String transactionId,
   }) =>
       _manager.writeCharacteristicForIdentifier(
         service.peripheral,
@@ -90,7 +90,7 @@ class Characteristic extends InternalCharacteristic {
   /// Subscribing to the returned object enables the notifications/indications
   /// on the peripheral. Cancelling the last subscription disables the
   /// notifications/indications on this characteristic.
-  Stream<Uint8List> monitor({String? transactionId}) =>
+  Stream<Uint8List> monitor({String transactionId}) =>
       _manager.monitorCharacteristicForIdentifier(
         service.peripheral,
         this,
@@ -104,7 +104,7 @@ class Characteristic extends InternalCharacteristic {
   /// Reads the value of a [Descriptor] identified by [descriptorUuid].
   Future<DescriptorWithValue> readDescriptor(
     String descriptorUuid, {
-    String? transactionId,
+    String transactionId,
   }) =>
       _manager.readDescriptorForCharacteristic(
         this,
@@ -116,7 +116,7 @@ class Characteristic extends InternalCharacteristic {
   Future<Descriptor> writeDescriptor(
     String descriptorUuid,
     Uint8List value, {
-    String? transactionId,
+    String transactionId,
   }) =>
       _manager.writeDescriptorForCharacteristic(
         this,

@@ -31,7 +31,7 @@ enum LogLevel { none, verbose, debug, info, warning, error }
 ///});
 ///```
 abstract class BleManager {
-  static BleManager? _instance;
+  static BleManager _instance;
 
   factory BleManager() {
     var instance = _instance;
@@ -66,8 +66,8 @@ abstract class BleManager {
   /// await BleManager().createClient();
   /// ```
   Future<void> createClient({
-    String? restoreStateIdentifier,
-    RestoreStateAction? restoreStateAction,
+    String restoreStateIdentifier,
+    RestoreStateAction restoreStateAction,
   });
 
   /// Frees native resources.
@@ -154,7 +154,7 @@ abstract class BleManager {
   /// On Android [peripheralId] scanned on one  device may or may not be
   /// recognized on a different Android device depending on peripheral’s
   /// implementation and changes in future OS releases.
-  Peripheral createUnsafePeripheral(String peripheralId, {String? name});
+  Peripheral createUnsafePeripheral(String peripheralId, {String name});
 }
 
 /// State of the Bluetooth Adapter.

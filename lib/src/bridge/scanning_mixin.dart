@@ -1,7 +1,7 @@
 part of _internal;
 
 mixin ScanningMixin on FlutterBLE {
-  Stream<ScanResult>? _activeScanEvents;
+  Stream<ScanResult> _activeScanEvents;
   Stream<ScanResult> get _scanEvents {
     var scanEvents = _activeScanEvents;
     if (scanEvents == null) {

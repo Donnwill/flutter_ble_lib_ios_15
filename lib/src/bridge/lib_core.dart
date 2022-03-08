@@ -58,10 +58,10 @@ class FlutterBleLib extends FlutterBLE
 
   Future<bool> isClientCreated() =>
     _methodChannel.invokeMethod<bool>(MethodName.isClientCreated)
-      .then((value) => value!);
+      .then((value) => value);
 
-  Future<void> createClient(String? restoreStateIdentifier) async {
-    await _methodChannel.invokeMethod(MethodName.createClient, <String, String?>{
+  Future<void> createClient(String restoreStateIdentifier) async {
+    await _methodChannel.invokeMethod(MethodName.createClient, <String, String>{
       ArgumentName.restoreStateIdentifier: restoreStateIdentifier
     });
   }

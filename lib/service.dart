@@ -41,7 +41,7 @@ class Service extends InternalService {
     String characteristicUuid,
     Uint8List value,
     bool withResponse, {
-    String? transactionId,
+    String transactionId,
   }) =>
       _manager.writeCharacteristicForService(
           peripheral,
@@ -59,7 +59,7 @@ class Service extends InternalService {
   /// [Characteristic.isReadable] is `true` can be read.
   Future<CharacteristicWithValue> readCharacteristic(
     String characteristicUuid, {
-    String? transactionId,
+    String transactionId,
   }) =>
       _manager.readCharacteristicForService(
         peripheral,
@@ -78,7 +78,7 @@ class Service extends InternalService {
   /// monitored.
   Stream<CharacteristicWithValue> monitorCharacteristic(
     String characteristicUuid, {
-    String? transactionId,
+    String transactionId,
   }) =>
       _manager.monitorCharacteristicForService(
         peripheral,
@@ -106,7 +106,7 @@ class Service extends InternalService {
   Future<DescriptorWithValue> readDescriptor(
     String characteristicUuid,
     String descriptorUuid, {
-    String? transactionId,
+    String transactionId,
   }) =>
       _manager.readDescriptorForService(
         this,
@@ -123,7 +123,7 @@ class Service extends InternalService {
     String characteristicUuid,
     String descriptorUuid,
     Uint8List value, {
-    String? transactionId,
+    String transactionId,
   }) =>
       _manager.writeDescriptorForService(
         this,

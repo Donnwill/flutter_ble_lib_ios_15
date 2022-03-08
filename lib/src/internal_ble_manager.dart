@@ -7,7 +7,7 @@ class InternalBleManager
         ManagerForService,
         ManagerForCharacteristic,
         ManagerForDescriptor {
-  late FlutterBleLib _bleLib;
+  FlutterBleLib _bleLib;
   
   InternalBleManager() {
     _bleLib = FlutterBleLib(this);
@@ -18,8 +18,8 @@ class InternalBleManager
 
   @override
   Future<void> createClient({
-    String? restoreStateIdentifier,
-    RestoreStateAction? restoreStateAction,
+    String restoreStateIdentifier,
+    RestoreStateAction restoreStateAction,
   }) {
     if (restoreStateAction != null) {
       _bleLib.restoredState().then((devices) {
@@ -37,11 +37,11 @@ class InternalBleManager
       _bleLib.cancelTransaction(transactionId);
 
   @override
-  Future<void> enableRadio({String? transactionId}) =>
+  Future<void> enableRadio({String transactionId}) =>
       _bleLib.enableRadio(transactionId ?? TransactionIdGenerator.getNextId());
 
   @override
-  Future<void> disableRadio({String? transactionId}) =>
+  Future<void> disableRadio({String transactionId}) =>
       _bleLib.disableRadio(transactionId ?? TransactionIdGenerator.getNextId());
 
   @override
@@ -65,7 +65,7 @@ class InternalBleManager
   Future<void> stopPeripheralScan() => _bleLib.stopDeviceScan();
 
   @override
-  Peripheral createUnsafePeripheral(String peripheralId, {String? name}) {
+  Peripheral createUnsafePeripheral(String peripheralId, {String name}) {
     const nameField = 'name';
     const identifierField = 'id';
     return Peripheral.fromJson({
@@ -77,10 +77,10 @@ class InternalBleManager
   @override
   Future<void> connectToPeripheral(
     String identifier, {
-    required bool isAutoConnect,
-    required int requestMtu,
-    required bool refreshGatt,
-    Duration? timeout,
+    bool isAutoConnect,
+    int requestMtu,
+    bool refreshGatt,
+    Duration timeout,
   }) async =>
       _bleLib.connectToPeripheral(
           identifier, isAutoConnect, requestMtu, refreshGatt, timeout);

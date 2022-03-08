@@ -20,13 +20,13 @@ class Descriptor extends InternalDescriptor {
       uuid = jsonObject[_DescriptorMetadata.uuid],
       super(jsonObject[_DescriptorMetadata.id]);
 
-  Future<Uint8List> read({String? transactionId}) =>
+  Future<Uint8List> read({String transactionId}) =>
       _manager.readDescriptorForIdentifier(
         this,
         transactionId ?? TransactionIdGenerator.getNextId(),
       );
 
-  Future<void> write(Uint8List value, {String? transactionId}) =>
+  Future<void> write(Uint8List value, {String transactionId}) =>
       _manager.writeDescriptorForIdentifier(
         this,
         value,
